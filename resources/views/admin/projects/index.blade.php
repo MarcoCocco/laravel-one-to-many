@@ -17,7 +17,7 @@
                     <td>{{ $project->description }}</td>
                     <td>{{ $project->type->name ?? 'Non specificato' }}</td>
                     <td>{{ $project->language }}</td>
-                    <td><a href="{{ route('admin.projects.show', $project->slug) }}"><i
+                    <td><a href="{{ route('admin.projects.show', $project) }}"><i
                                 class="fa-solid fa-magnifying-glass"></i></a></td>
                 </tr>
             @endforeach
