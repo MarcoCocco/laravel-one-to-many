@@ -15,7 +15,7 @@
                 <tr>
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->description }}</td>
-                    <td>{{ $project->type ?? 'Non specificato' }}</td>
+                    <td>{{ $project->type->name ?? 'Non specificato' }}</td>
                     <td>{{ $project->language }}</td>
                     <td><a href="{{ route('admin.projects.show', $project->slug) }}"><i
                                 class="fa-solid fa-magnifying-glass"></i></a></td>
