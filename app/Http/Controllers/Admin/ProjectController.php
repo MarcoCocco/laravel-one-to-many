@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+
+use function PHPSTORM_META\type;
 
 class ProjectController extends Controller
 {
@@ -28,7 +31,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create', compact('types'));
     }
 
     /**
@@ -71,7 +75,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**
@@ -112,6 +117,7 @@ class ProjectController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'github_link' => 'required|string|max:150',
+            'type_id' => 'nullable|exists:types,id',
             'language' => 'required|string|max:25',
             'creation_date' => 'required|date',
             'is_complete' => 'required|boolean',
@@ -121,6 +127,7 @@ class ProjectController extends Controller
             'description.required' => 'La descrizione deve contenere qualcosa.',
             'github_link.required' => 'Devi inserire un link GitHub.',
             'github_link.max' => 'Il link GitHub deve avere massimo :max caratteri.',
+            'type_id.exists' => 'Il tipo di progetto selezionato non esiste',
             'language.required' => 'Devi inserire un linguaggio.',
             'language.max' => 'Il linguaggio inserito deve avere massimo :max caratteri.',
             'creation_date.required' => 'Devi inserire una data di creazione.',

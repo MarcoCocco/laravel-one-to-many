@@ -42,6 +42,22 @@
         </div>
 
         <div class="mb-3">
+            <label for="type_id">Tipo di Progetto</label>
+            <select name="type_id" id="type_id" class="form-select @error('type_id') is-invalid @enderror"
+                aria-label="Default select example">
+                <option selected>Nessuno</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}" @if (old('type_id', $project->type_id) == $type->id) selected @endif>{{ $type->name }}</option>
+                @endforeach
+            </select>
+            @error('type_id')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
             <label for="language">Linguaggio di programmazione</label>
             <input type="text" name="language" id="language"
                 class="form-control @error('language') is-invalid @enderror"
