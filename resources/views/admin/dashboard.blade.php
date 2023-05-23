@@ -19,7 +19,8 @@
                     {{ __("Hai effettuato l'accesso all'area amministrativa.") }}
                 </div>
                 <div class="text-center p-4">
-                    <a href="{{ route('admin.projects.index') }}">Vai alla lista dei Progetti</a>
+                    <p><a href="{{ route('admin.projects.index') }}">Vai alla lista dei Progetti</a></p>
+                    <p><a href="{{ route('admin.types.index') }}">Vai alla lista di tutti i tipi di progetto</a></p>
                     <p class='pt-3'>Oppure</p>
                     <a href="{{ url('/')}}">Torna all'Homepage</a>
                 </div>
