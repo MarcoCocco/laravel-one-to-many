@@ -5,11 +5,8 @@
         <thead>
             <th>Titolo</th>
             <th>Descrizione</th>
-            <th>Link alla Repository</th>
+            <th>Tipo di progetto</th>
             <th>Linguaggio di Programmazione</th>
-            <th>Data di creazione</th>
-            <th>Completo</th>
-            <th>Slug</th>
         </thead>
 
         <tbody>
@@ -18,11 +15,8 @@
                 <tr>
                     <td>{{ $project->title }}</td>
                     <td>{{ $project->description }}</td>
-                    <td>{{ $project->github_link }}</td>
+                    <td>{{ $project->type ?? 'Non specificato' }}</td>
                     <td>{{ $project->language }}</td>
-                    <td>{{ $project->creation_date }}</td>
-                    <td>{{ $project->is_complete ? 'Sì' : 'No' }}</td>
-                    <td>{{ $project->slug }}</td>
                     <td><a href="{{ route('admin.projects.show', $project->slug) }}"><i
                                 class="fa-solid fa-magnifying-glass"></i></a></td>
                 </tr>
