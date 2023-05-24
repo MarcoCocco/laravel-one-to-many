@@ -2,7 +2,9 @@
 
 @section('content')
     <h1 class="m-4 text-center">Crea un progetto</h1>
-
+    <div class="back-to-list text-center mb-4">
+        <a href="{{ route('admin.projects.index') }}"><i class="fa-solid fa-left-long"></i> Torna indietro</a>
+    </div>
     <form action="{{ route('admin.projects.store') }}" method="POST">
         @csrf
 
@@ -45,7 +47,8 @@
                 aria-label="Default select example">
                 <option selected>Nessuno</option>
                 @foreach ($types as $type)
-                    <option value="{{ $type->id }}" @if (old('type_id') == $type->id) selected @endif>{{ $type->name }}</option>
+                    <option value="{{ $type->id }}" @if (old('type_id') == $type->id) selected @endif>
+                        {{ $type->name }}</option>
                 @endforeach
             </select>
             @error('type_id')
